@@ -17,23 +17,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Web", "6 - Web", "{F216
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Domain", "CQRSProjectModel.Domain\CQRSProjectModel.Domain.csproj", "{3E07F432-D488-4A25-A8D5-733E9C31B601}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.API", "CQRSProjectModel.API\CQRSProjectModel.API.csproj", "{06E8B561-CB04-4CE0-8D0F-2063A1A08D1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.API", "CQRSProjectModel.API\CQRSProjectModel.API.csproj", "{06E8B561-CB04-4CE0-8D0F-2063A1A08D1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.WebApplication", "CQRSProjectModel.WebApplication\CQRSProjectModel.WebApplication.csproj", "{B44B19E9-78C2-4619-BF8B-62CBE50C82A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.WebApplication", "CQRSProjectModel.WebApplication\CQRSProjectModel.WebApplication.csproj", "{B44B19E9-78C2-4619-BF8B-62CBE50C82A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.Test", "CQRSProjectModel.Test\CQRSProjectModel.Test.csproj", "{B08252A1-CE0A-4232-8CB5-7689C10A1EE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Test", "CQRSProjectModel.Test\CQRSProjectModel.Test.csproj", "{B08252A1-CE0A-4232-8CB5-7689C10A1EE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B11B3ADD-E53C-4649-96CE-440906D216A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{844EC6CF-0E81-4E0F-907B-DFD65127ADB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.Infrastructure.Data.SQLServer", "CQRSProjectModel.Infrastructure.Data.SQLServer\CQRSProjectModel.Infrastructure.Data.SQLServer.csproj", "{610B2DF5-9406-4692-9A5F-89954A2ED0F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Infrastructure.Data.SQLServer", "CQRSProjectModel.Infrastructure.Data.SQLServer\CQRSProjectModel.Infrastructure.Data.SQLServer.csproj", "{610B2DF5-9406-4692-9A5F-89954A2ED0F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.Infrastructure.Data.MongoDB", "CQRSProjectModel.Infrastructure.Data.MongoDB\CQRSProjectModel.Infrastructure.Data.MongoDB.csproj", "{23219794-EC79-44E9-B7FA-A739DFE7FA30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Infrastructure.Data.MongoDB", "CQRSProjectModel.Infrastructure.Data.MongoDB\CQRSProjectModel.Infrastructure.Data.MongoDB.csproj", "{23219794-EC79-44E9-B7FA-A739DFE7FA30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.Application", "CQRSProjectModel.Application\CQRSProjectModel.Application.csproj", "{B0DDA6CA-9020-4F32-B8ED-FDDA7E6621AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Application", "CQRSProjectModel.Application\CQRSProjectModel.Application.csproj", "{B0DDA6CA-9020-4F32-B8ED-FDDA7E6621AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.Infrastructure.CrossCutting.IoC", "CQRSProjectModel.Infrastructure.CrossCutting.IoC\CQRSProjectModel.Infrastructure.CrossCutting.IoC.csproj", "{9965206C-75AA-4068-8011-46A39EA08A51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Infrastructure.CrossCutting.IoC", "CQRSProjectModel.Infrastructure.CrossCutting.IoC\CQRSProjectModel.Infrastructure.CrossCutting.IoC.csproj", "{9965206C-75AA-4068-8011-46A39EA08A51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.Domain.Core", "CQRSProjectModel.Domain.Core\CQRSProjectModel.Domain.Core.csproj", "{1FFA0D23-3F47-4DBC-8D45-A60B4721F8EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{9965206C-75AA-4068-8011-46A39EA08A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9965206C-75AA-4068-8011-46A39EA08A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9965206C-75AA-4068-8011-46A39EA08A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FFA0D23-3F47-4DBC-8D45-A60B4721F8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FFA0D23-3F47-4DBC-8D45-A60B4721F8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FFA0D23-3F47-4DBC-8D45-A60B4721F8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FFA0D23-3F47-4DBC-8D45-A60B4721F8EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{23219794-EC79-44E9-B7FA-A739DFE7FA30} = {B11B3ADD-E53C-4649-96CE-440906D216A2}
 		{B0DDA6CA-9020-4F32-B8ED-FDDA7E6621AB} = {40D900CC-375A-4DD1-80BF-87328A100A2F}
 		{9965206C-75AA-4068-8011-46A39EA08A51} = {844EC6CF-0E81-4E0F-907B-DFD65127ADB4}
+		{1FFA0D23-3F47-4DBC-8D45-A60B4721F8EF} = {72B97135-5745-443D-8089-E09C625DF797}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF3B1377-5592-4D86-AF1E-DC7575CFAE4F}

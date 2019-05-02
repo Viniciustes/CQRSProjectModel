@@ -1,12 +1,35 @@
-﻿using CQRSProjectModel.Domain.Enums;
+﻿using CQRSProjectModel.Domain.Core.Entities;
+using CQRSProjectModel.Domain.Enums;
 using System;
-using System.Collections.Generic;
 
 namespace CQRSProjectModel.Domain.Entities
 {
-    public class Pessoa
+    public class Pessoa : Entity
     {
-        public Guid Id { get; private set; }
+        // Construtor em banco para uso do EF.
+        protected Pessoa() { }
+
+        // Construtor para criação da entidade.
+        public Pessoa(string nome, string cPF, DateTime nascimento, Genero genero, string telefone)
+        {
+            Id = Guid.NewGuid();
+            Nome = nome;
+            CPF = cPF;
+            Nascimento = nascimento;
+            Genero = genero;
+            Telefone = telefone;
+        }
+
+        // Construtor para atualização da entidade.
+        public Pessoa(Guid id, string nome, string cPF, DateTime nascimento, Genero genero, string telefone)
+        {
+            Id = id;
+            Nome = nome;
+            CPF = cPF;
+            Nascimento = nascimento;
+            Genero = genero;
+            Telefone = telefone;
+        }
 
         public string Nome { get; private set; }
 
@@ -17,7 +40,5 @@ namespace CQRSProjectModel.Domain.Entities
         public Genero Genero { get; private set; }
 
         public string Telefone { get; private set; }
-
-        public IList<Endereco> Enderecos { get; private set; }
     }
 }
