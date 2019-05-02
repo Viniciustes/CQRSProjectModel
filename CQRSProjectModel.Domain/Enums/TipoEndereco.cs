@@ -5,6 +5,7 @@
         Residencial = 0,
         Comercial = 1,
         Recado = 2,
-        Cobranca = 3
+        Cobranca = 3,
+        Entrega = 4
     }
 }
