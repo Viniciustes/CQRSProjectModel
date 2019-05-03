@@ -1,16 +1,25 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
+using System.IO;
 
 namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Context
 {
     public class CQRSProjectModelMongoDbContext
     {
-        public IMongoDatabase mongoDatabase { get; }
+        private static readonly string DatabaseName = "cqrsprojectmodel";
+
+        public IMongoDatabase MongoDatabase { get; }
 
         public CQRSProjectModelMongoDbContext()
         {
-            var client = new MongoClient("mongodb://admin:v123456@ds149146.mlab.com:49146/CQRSProjectModel");
+            var configuration = new ConfigurationBuilder()
+              .SetBasePath(Directory.GetCurrentDirectory())
+              .AddJsonFile("appsettings.json")
+              .Build();
 
-            mongoDatabase = client.GetDatabase("CQRSProjectModel");
+            var client = new MongoClient(configuration.GetConnectionString("ConnectionStringMongoDB"));
+
+            MongoDatabase = client.GetDatabase(DatabaseName);
         }
     }
 }

@@ -1,6 +1,10 @@
-﻿namespace CQRSProjectModel.Application.Interfaces
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace CQRSProjectModel.Application.Interfaces
 {
-    public interface IAppService
+    public interface IAppService<TEntity> where TEntity : class
     {
+        Task<IEnumerable<TEntity>> GetAllAsync();
     }
 }

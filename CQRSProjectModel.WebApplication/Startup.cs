@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CQRSProjectModel.Infrastructure.CrossCutting.IoC.DependencyInjections;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,7 @@ namespace CQRSProjectModel.WebApplication
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            InjectorBootstrapper.ConfigureServiceCollection(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

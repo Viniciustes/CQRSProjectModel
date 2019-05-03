@@ -12,7 +12,7 @@ namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories.WriteOnly
 
         public RepositoryWriteOnly(CQRSProjectModelMongoDbContext context, string nameColection)
         {
-            mongoCollection = context.mongoDatabase.GetCollection<TEntity>(nameColection);
+            mongoCollection = context.MongoDatabase.GetCollection<TEntity>(nameColection);
         }
 
         public void Create(TEntity entity)

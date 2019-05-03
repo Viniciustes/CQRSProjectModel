@@ -16,7 +16,7 @@ namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories.ReadOnly
 
         public RepositoryReadOnly(CQRSProjectModelMongoDbContext context, string nameColection)
         {
-            mongoCollection = context.mongoDatabase.GetCollection<TEntity>(nameColection);
+            mongoCollection = context.MongoDatabase.GetCollection<TEntity>(nameColection);
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression)

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CQRSProjectModel.Application\CQRSProjectModel.Application.csproj" />
+    <ProjectReference Include="..\CQRSProjectModel.Infrastructure.CrossCutting.IoC\CQRSProjectModel.Infrastructure.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\CQRSProjectModel.Infrastructure.Data.SQLServer\CQRSProjectModel.Infrastructure.Data.SQLServer.csproj" />
   </ItemGroup>
 
