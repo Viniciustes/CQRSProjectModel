@@ -1,8 +1,8 @@
-﻿using CQRSProjectModel.Domain.Entities;
+﻿using CQRSProjectModel.Application.ViewModels;
 
 namespace CQRSProjectModel.Application.Interfaces
 {
-    public interface IPessoaAppService : IAppService<Pessoa>
+    public interface IPessoaAppService : IAppService<PessoaViewModel>
     {
     }
 }

@@ -1,12 +1,13 @@
 ﻿using CQRSProjectModel.Application.Interfaces;
-using CQRSProjectModel.Domain.Entities;
+using CQRSProjectModel.Application.ViewModels;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
 
 namespace CQRSProjectModel.Application.Services
 {
-    public class PessoaAppService : AppService<Pessoa>, IPessoaAppService
+    public class PessoaAppService : AppService<PessoaViewModel>, IPessoaAppService
     {
-        public PessoaAppService(IRepositoryPessoaDenormalizeReadOnly repositoryPessoaDenormalizeReadOnly) : base(repositoryPessoaDenormalizeReadOnly)
+        //TODO: Alterar valor null sendo passado no construtor base
+        public PessoaAppService(IRepositoryPessoaDenormalizeReadOnly repositoryPessoaDenormalizeReadOnly) : base(null)
         {
         }
     }

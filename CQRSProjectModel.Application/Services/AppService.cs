@@ -14,6 +14,11 @@ namespace CQRSProjectModel.Application.Services
             this.repositoryDenormalizeReadOnly = repositoryDenormalizeReadOnly;
         }
 
+        public async Task Create(TEntity entity)
+        {
+            //throw new System.NotImplementedException();
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await repositoryDenormalizeReadOnly.GetAllAsync();
