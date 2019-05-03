@@ -1,10 +1,12 @@
-﻿using CQRSProjectModel.Domain.Interfaces.Repositories;
+﻿using CQRSProjectModel.Domain.Core.Entities;
+using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepositoryNormalizeWriteOnly<TEntity> where TEntity : Entity
     {
         private readonly DbSet<TEntity> DbSet;
 
@@ -20,9 +22,12 @@ namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
             DbSet.Add(entity);
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(Guid guid)
         {
-            DbSet.Remove(entity);
+            var entity = DbSet.Find(guid);
+
+            if (entity != null)
+                DbSet.Remove(entity);
         }
 
         public void Update(TEntity entity)
