@@ -2,9 +2,9 @@
 using CQRSProjectModel.Domain.Core.Events;
 using System.Threading.Tasks;
 
-namespace CQRSProjectModel.Domain.Core.Mediators
+namespace CQRSProjectModel.Domain.Core.Mediators.Normalize
 {
-    public interface IMediatorHandler
+    public interface IMediatorHandlerNormalize
     {
         Task SendCommand<T>(T command) where T : Command;
 

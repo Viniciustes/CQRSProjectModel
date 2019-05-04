@@ -16,7 +16,7 @@ namespace CQRSProjectModel.Application.Services
 
         public async Task Create(TEntity entity)
         {
-            //throw new System.NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()

@@ -32,8 +32,10 @@ namespace CQRSProjectModel.WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 await pessoaAppService.Create(pessoaViewModel);
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(pessoaViewModel);
         }
 
