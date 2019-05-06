@@ -13,8 +13,6 @@ namespace CQRSProjectModel.Domain.Commands.Pessoa.Normalize
 
         public DateTime Nascimento { get; protected set; }
 
-        //public Genero Genero { get; private set; }
-
         public string Telefone { get; protected set; }
     }
 }

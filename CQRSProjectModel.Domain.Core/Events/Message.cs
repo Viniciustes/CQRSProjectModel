@@ -2,7 +2,7 @@
 
 namespace CQRSProjectModel.Domain.Core.Events
 {
-    public abstract class Message : IRequest<bool>
+    public abstract class Message : IRequest
     {
         public Message()
         {

@@ -7,7 +7,6 @@ namespace CQRSProjectModel.Domain.Commands.Pessoa.Normalize
     {
         public CreatePessoaCommandNormalize(string nome, string cPF, DateTime nascimento, string telefone)
         {
-            Id = Guid.NewGuid();
             Nome = nome;
             CPF = cPF;
             Nascimento = nascimento;

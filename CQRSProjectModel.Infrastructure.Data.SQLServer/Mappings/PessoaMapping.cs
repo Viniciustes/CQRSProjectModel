@@ -28,8 +28,8 @@ namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Mappings
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(x => x.Genero)
-                .IsRequired();
+            //builder.Property(x => x.Genero)
+            //    .IsRequired();
 
             builder.Property(c => c.CPF)
                 .HasColumnType("varchar(11)")

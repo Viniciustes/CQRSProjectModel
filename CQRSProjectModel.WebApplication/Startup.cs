@@ -1,4 +1,5 @@
 ﻿using CQRSProjectModel.Infrastructure.CrossCutting.IoC.DependencyInjections;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +27,8 @@ namespace CQRSProjectModel.WebApplication
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+           
 
             InjectorBootstrapper.ConfigureServiceCollection(services);
 

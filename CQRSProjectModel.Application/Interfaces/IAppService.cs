@@ -5,8 +5,8 @@ namespace CQRSProjectModel.Application.Interfaces
 {
     public interface IAppService<TEntity> where TEntity : class
     {
-        Task<IEnumerable<TEntity>> GetAllAsync();
-
         Task Create(TEntity entity);
+
+        Task<IEnumerable<TEntity>> GetAllAsync();
     }
 }

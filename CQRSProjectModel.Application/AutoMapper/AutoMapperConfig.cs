@@ -2,7 +2,7 @@
 
 namespace CQRSProjectModel.Application.AutoMapper
 {
-    class AutoMapperConfig
+    public class AutoMapperConfig
     {
         public static MapperConfiguration RegisterMappings()
         {

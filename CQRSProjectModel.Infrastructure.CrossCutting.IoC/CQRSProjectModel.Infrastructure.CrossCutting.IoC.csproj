@@ -5,12 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="microsoft.aspnetcore.http" Version="2.2.2" />
     <PackageReference Include="microsoft.extensions.dependencyinjection.abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CQRSProjectModel.API\CQRSProjectModel.API.csproj" />
     <ProjectReference Include="..\CQRSProjectModel.Application\CQRSProjectModel.Application.csproj" />
+    <ProjectReference Include="..\CQRSProjectModel.Infrastructure.CrossCutting.Mediator\CQRSProjectModel.Infrastructure.CrossCutting.Mediator.csproj" />
     <ProjectReference Include="..\CQRSProjectModel.Infrastructure.Data.MongoDB\CQRSProjectModel.Infrastructure.Data.MongoDB.csproj" />
     <ProjectReference Include="..\CQRSProjectModel.Infrastructure.Data.SQLServer\CQRSProjectModel.Infrastructure.Data.SQLServer.csproj" />
   </ItemGroup>

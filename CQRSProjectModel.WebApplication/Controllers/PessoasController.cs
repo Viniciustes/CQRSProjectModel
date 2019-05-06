@@ -27,7 +27,7 @@ namespace CQRSProjectModel.WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,CPF,Nascimento,TipoPessoa,Telefone")] PessoaViewModel pessoaViewModel)
+        public async Task<IActionResult> Create([Bind("Nome,CPF,Nascimento,TipoPessoa,Telefone")] PessoaViewModel pessoaViewModel)
         {
             if (ModelState.IsValid)
             {
