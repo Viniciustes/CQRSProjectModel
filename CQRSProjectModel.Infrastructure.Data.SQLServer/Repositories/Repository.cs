@@ -3,6 +3,7 @@ using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
 {
@@ -17,14 +18,14 @@ namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
             DbSet = context.Set<TEntity>();
         }
 
-        public void Create(TEntity entity)
+        public async Task Create(TEntity entity)
         {
-            DbSet.Add(entity);
+            await DbSet.AddAsync(entity);
         }
 
-        public void Delete(Guid guid)
+        public async Task Delete(Guid guid)
         {
-            var entity = DbSet.Find(guid);
+            var entity = await DbSet.FindAsync(guid);
 
             if (entity != null)
                 DbSet.Remove(entity);

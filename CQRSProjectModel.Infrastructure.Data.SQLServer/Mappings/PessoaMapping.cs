@@ -24,12 +24,9 @@ namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Mappings
                 .HasMaxLength(30);
 
             builder.Property(x => x.Nome)
-                .HasColumnType("varchar")
+                .HasColumnType("varchar(100)")
                 .HasMaxLength(100)
                 .IsRequired();
-
-            //builder.Property(x => x.Genero)
-            //    .IsRequired();
 
             builder.Property(c => c.CPF)
                 .HasColumnType("varchar(11)")

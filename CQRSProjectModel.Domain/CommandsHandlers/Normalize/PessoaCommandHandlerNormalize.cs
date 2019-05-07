@@ -1,35 +1,46 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using CQRSProjectModel.Domain.Commands.Pessoa.Normalize;
+﻿using CQRSProjectModel.Domain.Commands.Pessoa.Normalize;
 using CQRSProjectModel.Domain.Core.Mediators.Normalize;
 using CQRSProjectModel.Domain.Core.Notifications;
+using CQRSProjectModel.Domain.Entities;
+using CQRSProjectModel.Domain.Events.Pessoa;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize;
+using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
 using MediatR;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Domain.CommandsHandlers.Normalize
 {
     public class PessoaCommandHandlerNormalize : CommandHandlerNormalize, IRequestHandler<CreatePessoaCommandNormalize>
     {
         private readonly IMediatorHandlerNormalize mediator;
+        private readonly IRepositoryPessoaNormalizeWriteOnly repository;
 
-        public PessoaCommandHandlerNormalize(IUnitOfWork unitOfWork, IMediatorHandlerNormalize mediator, INotificationHandler<DomainNotification> notification) : base (unitOfWork, mediator, notification)
+        public PessoaCommandHandlerNormalize(IUnitOfWork unitOfWork, IMediatorHandlerNormalize mediator, IRepositoryPessoaNormalizeWriteOnly repository, INotificationHandler<DomainNotification> notification) : base(unitOfWork, mediator, notification)
         {
             this.mediator = mediator;
+            this.repository = repository;
         }
 
-        public Task Handle(CreatePessoaCommandNormalize request, CancellationToken cancellationToken)
+        async Task<Unit> IRequestHandler<CreatePessoaCommandNormalize, Unit>.Handle(CreatePessoaCommandNormalize request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return Task.CompletedTask;
+                return Unit.Value;
             }
-            throw new System.NotImplementedException();
-        }
 
-        Task<Unit> IRequestHandler<CreatePessoaCommandNormalize, Unit>.Handle(CreatePessoaCommandNormalize request, CancellationToken cancellationToken)
-        {
-            throw new System.NotImplementedException();
+            var pessoa = new Pessoa(Guid.NewGuid(), request.Nome, request.CPF, request.Nascimento, request.Telefone);
+
+            await repository.Create(pessoa);
+
+            if (Commit())
+            {
+                await mediator.RaiseEvent(new CreatedPessoaEvent(pessoa.Id, request.Nome, request.CPF, request.Nascimento, request.Telefone));
+            }
+
+            return Unit.Value;
         }
     }
 }

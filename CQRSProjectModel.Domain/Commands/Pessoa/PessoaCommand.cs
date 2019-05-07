@@ -1,9 +1,9 @@
 ﻿using CQRSProjectModel.Domain.Core.Commands;
 using System;
 
-namespace CQRSProjectModel.Domain.Commands.Pessoa.Normalize
+namespace CQRSProjectModel.Domain.Commands.Pessoa
 {
-    public abstract class PessoaCommandNormalize : Command
+    public abstract class PessoaCommand : Command
     {
         public Guid Id { get; protected set; }
 

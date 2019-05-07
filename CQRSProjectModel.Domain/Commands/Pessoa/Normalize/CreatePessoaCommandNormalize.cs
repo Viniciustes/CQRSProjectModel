@@ -3,7 +3,7 @@ using System;
 
 namespace CQRSProjectModel.Domain.Commands.Pessoa.Normalize
 {
-    public class CreatePessoaCommandNormalize : PessoaCommandNormalize
+    public class CreatePessoaCommandNormalize : PessoaCommand
     {
         public CreatePessoaCommandNormalize(string nome, string cPF, DateTime nascimento, string telefone)
         {

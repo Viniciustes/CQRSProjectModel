@@ -3,15 +3,18 @@ using System;
 
 namespace CQRSProjectModel.Domain.Events.Pessoa
 {
-    public class PessoaCreatedEvent : Event
+    public class CreatedPessoaEvent : Event
     {
-        public PessoaCreatedEvent(string nome, string cPF, DateTime nascimento, string telefone)
+        public CreatedPessoaEvent(Guid id, string nome, string cPF, DateTime nascimento, string telefone)
         {
+            Id = id;
             Nome = nome;
             CPF = cPF;
             Nascimento = nascimento;
             Telefone = telefone;
         }
+
+        public Guid Id { get; private set; }
 
         public string Nome { get; private set; }
 
