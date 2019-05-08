@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using CQRSProjectModel.Application.Interfaces;
 using CQRSProjectModel.Application.ViewModels;
-using CQRSProjectModel.Domain.Entities;
 using CQRSProjectModel.Domain.Interfaces.Services;
+using CQRSProjectModel.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,14 +18,14 @@ namespace CQRSProjectModel.Application.Services
             _mapper = mapper;
         }
 
-        public Task Create(PessoaViewModel pessoaViewModel)
+        public async Task Create(PessoaViewModel pessoaViewModel)
         {
             await Create(_mapper.Map<Pessoa>(pessoaViewModel));
         }
 
-        public async Task Update(PessoaViewModel pessoaViewModel)
+        public void Update(PessoaViewModel pessoaViewModel)
         {
-            await Update(_mapper.Map<Pessoa>(pessoaViewModel));
+            Update(_mapper.Map<Pessoa>(pessoaViewModel));
         }
 
         async Task<IEnumerable<PessoaViewModel>> IAppService<PessoaViewModel>.GetAllAsync()

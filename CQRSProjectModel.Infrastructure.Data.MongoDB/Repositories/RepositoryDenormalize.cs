@@ -1,4 +1,5 @@
 ﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize;
+using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Context;
 using MongoDB.Driver;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories
 {
-    class RepositoryDenormalize<TEntity> : IRepositoryDenormalize<TEntity> where TEntity : Entity
+    public class RepositoryDenormalize<TEntity> : IRepositoryDenormalize<TEntity> where TEntity : ModelBase
     {
         protected readonly IMongoCollection<TEntity> mongoCollection;
 

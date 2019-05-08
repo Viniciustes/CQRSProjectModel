@@ -1,6 +1,6 @@
 ﻿namespace CQRSProjectModel.Domain.Requests
 {
-    class RequestMessage
+    public class RequestMessage
     {
         public RequestMessage()
         {

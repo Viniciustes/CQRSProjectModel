@@ -1,5 +1,5 @@
-﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
+﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize;
+using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize;
 using CQRSProjectModel.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,11 @@ namespace CQRSProjectModel.Domain.Services
 {
     class Service<TEntity> : IService<TEntity> where TEntity : class
     {
-        private readonly IRepositoryNormalizeWriteOnly<TEntity> _repositoryNormalize;
+        private readonly IRepository<TEntity> _repositoryNormalize;
 
-        private readonly IRepositoryDenormalizeReadOnly<TEntity> _repositoryDenormalize;
+        private readonly IRepositoryDenormalize<TEntity> _repositoryDenormalize;
 
-        public Service(IRepositoryNormalizeWriteOnly<TEntity> repositoryNormalize, IRepositoryDenormalizeReadOnly<TEntity> repositoryDenormalize)
+        public Service(IRepository<TEntity> repositoryNormalize, IRepositoryDenormalize<TEntity> repositoryDenormalize)
         {
             _repositoryNormalize = repositoryNormalize;
 

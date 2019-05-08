@@ -1,4 +1,5 @@
 ﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize;
+using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : ModelBase
     {
         private readonly DbSet<TEntity> DbSet;
 

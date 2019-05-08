@@ -51,7 +51,7 @@ namespace CQRSProjectModel.WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nome,CPF,Nascimento,TipoPessoa,Telefone")] PessoaViewModel pessoaViewModel)
+        public IActionResult Edit(Guid id, [Bind("Id,Nome,CPF,Nascimento,TipoPessoa,Telefone")] PessoaViewModel pessoaViewModel)
         {
             if (id != pessoaViewModel.Id)
             {
@@ -60,7 +60,7 @@ namespace CQRSProjectModel.WebApplication.Controllers
 
             if (ModelState.IsValid)
             {
-                await _pessoaAppService.Update(pessoaViewModel);
+                _pessoaAppService.Update(pessoaViewModel);
 
                 return RedirectToAction(nameof(Index));
             }

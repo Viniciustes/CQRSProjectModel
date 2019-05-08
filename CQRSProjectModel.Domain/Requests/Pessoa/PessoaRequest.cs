@@ -2,7 +2,7 @@
 
 namespace CQRSProjectModel.Domain.Requests.Pessoa
 {
-    internal abstract class PessoaRequest : Request
+    public abstract class PessoaRequest : Request
     {
         public Guid Id { get; protected set; }
 

@@ -3,7 +3,7 @@ using System;
 
 namespace CQRSProjectModel.Domain.Requests.Pessoa.Normalize
 {
-    internal class CreatePessoaRequestNormalize : PessoaRequest
+    public class CreatePessoaRequestNormalize : PessoaRequest
     {
         public CreatePessoaRequestNormalize(string nome, string cPF, DateTime nascimento, string telefone)
         {

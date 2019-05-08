@@ -4,7 +4,7 @@ using System;
 
 namespace CQRSProjectModel.Domain.Requests
 {
-    abstract class Request : RequestMessage, IRequest
+    public abstract class Request : RequestMessage, IRequest
     {
         public Request()
         {

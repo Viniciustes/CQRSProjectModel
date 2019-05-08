@@ -1,6 +1,10 @@
 ﻿namespace CQRSProjectModel.Domain.Requests.Notification
 {
-    internal abstract class NotificationRequest : Request
+    public class NotificationRequest : Request
     {
+        public override bool IsValid()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -4,5 +4,9 @@ namespace CQRSProjectModel.Domain.Validations.Pessoa
 {
     class CreatePessoaValidation : PessoaValidation<CreatePessoaRequestNormalize>
     {
+        public CreatePessoaValidation()
+        {
+            ValidarNome();
+        }
     }
 }

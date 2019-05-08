@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Domain.RequestsHandlers
 {
-    class PessoaRequestHandler : IRequestHandler<CreatePessoaRequestNormalize>
+    public class PessoaRequestHandler : IRequestHandler<CreatePessoaRequestNormalize>
     {
         public Task<Unit> Handle(CreatePessoaRequestNormalize request, CancellationToken cancellationToken)
         {

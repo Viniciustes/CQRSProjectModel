@@ -2,11 +2,13 @@
 using CQRSProjectModel.Application.AutoMapper;
 using CQRSProjectModel.Application.Interfaces;
 using CQRSProjectModel.Application.Services;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
+using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
+using CQRSProjectModel.Domain.Requests.Notification;
+using CQRSProjectModel.Domain.Requests.Pessoa.Normalize;
+using CQRSProjectModel.Domain.RequestsHandlers;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Context;
-using CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories.ReadOnly;
+using CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.UnitOfWork;
@@ -22,11 +24,15 @@ namespace CQRSProjectModel.Infrastructure.CrossCutting.IoC.DependencyInjections
         public static void ConfigureServiceCollection(IServiceCollection services)
         {
             // 1 - Domain
-            services.AddScoped<IRepositoryPessoaDenormalizeReadOnly, RepositoryPessoaReadOnly>();
+            services.AddScoped<IRepositoryPessoa, RepositoryPessoa>();
 
-            services.AddScoped<IRepositoryPessoaNormalizeWriteOnly, RepositoryPessoa>();
+            services.AddScoped<IRepositoryDenormalizePessoa, RepositoryDenormalizePessoa>();
 
-            // 1 - Domain Commands
+            //Todo: Verificar diferenças INotificationHandler e IRequestHandler
+            // 1 - Domain Request
+            services.AddScoped<INotificationHandler<NotificationRequest>, NotificationRequestHandler>();
+
+            //services.AddScoped<INotificationHandler<CreatePessoaRequestNormalize>, PessoaRequestHandler>();
 
             // 2 - Application
             services.AddScoped<IPessoaAppService, PessoaAppService>();
