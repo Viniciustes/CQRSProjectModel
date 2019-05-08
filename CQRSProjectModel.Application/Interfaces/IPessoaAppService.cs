@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Application.Interfaces
 {
-    public interface IPessoaAppService : IAppService<Pessoa>
+    public interface IPessoaAppService : IAppService<PessoaViewModel>
     {
-        Task Create(PessoaViewModel pessoaViewModel);
-
-        new Task<IEnumerable<PessoaViewModel>> GetAllAsync();
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CQRSProjectModel.Application.Interfaces
+namespace CQRSProjectModel.Domain.Interfaces.Services
 {
-    public interface IAppService<TEntity> where TEntity : class
+    public interface IService<TEntity> where TEntity : class
     {
         Task Delete(Guid guid);
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly
+namespace CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize
 {
-    public interface IRepositoryDenormalizeReadOnly<TEntity> where TEntity : class
+    public interface IRepositoryDenormalize<TEntity> where TEntity : class
     {
         TEntity GetById(Guid guid);
 
@@ -19,5 +19,11 @@ namespace CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly
         Task<IList<TEntity>> GetAllAsync();
 
         Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> expression);
+
+        void Create(TEntity entity);
+
+        void Update(TEntity entity);
+
+        void Delete(Guid guid);
     }
 }
