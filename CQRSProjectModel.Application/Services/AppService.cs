@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using CQRSProjectModel.Application.Interfaces;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
+﻿using CQRSProjectModel.Application.Interfaces;
+using CQRSProjectModel.Domain.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,23 +8,36 @@ namespace CQRSProjectModel.Application.Services
 {
     public class AppService<TEntity> : IAppService<TEntity> where TEntity : class
     {
-        private readonly IMapper mapper;
-        private readonly IRepositoryDenormalizeReadOnly<TEntity> _repositoryDenormalizeReadOnly;
+        private readonly IService<TEntity> _service;
 
-        public AppService(IMapper mapper, IRepositoryDenormalizeReadOnly<TEntity> repositoryDenormalizeReadOnly)
+        public AppService(IService<TEntity> service)
         {
-            this.mapper = mapper;
-            this._repositoryDenormalizeReadOnly = repositoryDenormalizeReadOnly;
+            _service = service;
         }
 
         public async Task Create(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            await _service.Create(entity);
+        }
+
+        public async Task Delete(Guid guid)
+        {
+            await _service.Delete(guid);
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _repositoryDenormalizeReadOnly.GetAllAsync();
+            return await _service.GetAllAsync();
+        }
+
+        public async Task<TEntity> GetById(Guid guid)
+        {
+            return await _service.GetById(guid);
+        }
+
+        public void Update(TEntity entity)
+        {
+            _service.Update(entity);
         }
     }
 }

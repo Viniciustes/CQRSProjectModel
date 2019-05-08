@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using CQRSProjectModel.Application.Interfaces;
 using CQRSProjectModel.Application.ViewModels;
-using CQRSProjectModel.Domain.Commands.Pessoa.Normalize;
-using CQRSProjectModel.Domain.Core.Mediators.Normalize;
 using CQRSProjectModel.Domain.Entities;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
+using CQRSProjectModel.Domain.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,25 +11,31 @@ namespace CQRSProjectModel.Application.Services
 {
     public class PessoaAppService : AppService<Pessoa>, IPessoaAppService
     {
-        private readonly IMapper mapper;
-        private readonly IMediatorHandlerNormalize mediator;
+        private readonly IMapper _mapper;
 
-        public PessoaAppService(IMapper mapper, IMediatorHandlerNormalize mediator, IRepositoryPessoaDenormalizeReadOnly repositoryPessoaDenormalizeReadOnly) : base(mapper, repositoryPessoaDenormalizeReadOnly)
+        public PessoaAppService(IMapper mapper, IServicePessoa service) : base(service)
         {
-            this.mapper = mapper;
-            this.mediator = mediator;
+            _mapper = mapper;
         }
 
         public async Task Create(PessoaViewModel pessoaViewModel)
         {
-            var registerCommand = mapper.Map<CreatePessoaCommandNormalize>(pessoaViewModel);
-
-            await mediator.SendCommand(registerCommand);
+            await Create(_mapper.Map<Pessoa>(pessoaViewModel));
         }
 
-        public new async Task<IEnumerable<PessoaViewModel>> GetAllAsync()
+        public async Task Update(PessoaViewModel pessoaViewModel)
         {
-            return mapper.Map<IEnumerable<PessoaViewModel>>(await base.GetAllAsync());
+            await Update(_mapper.Map<Pessoa>(pessoaViewModel));
+        }
+
+        async Task<IEnumerable<PessoaViewModel>> IAppService<PessoaViewModel>.GetAllAsync()
+        {
+            return _mapper.Map<IEnumerable<PessoaViewModel>>(await GetAllAsync());
+        }
+
+        async Task<PessoaViewModel> IAppService<PessoaViewModel>.GetById(Guid guid)
+        {
+            return _mapper.Map<PessoaViewModel>(await GetById(guid));
         }
     }
 }

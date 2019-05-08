@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly
+namespace CQRSProjectModel.Domain.Interfaces.Repositories.Normalize
 {
-    public interface IRepositoryNormalizeWriteOnly<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class
     {
         Task Create(TEntity entity);
 
