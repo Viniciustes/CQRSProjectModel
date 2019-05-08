@@ -1,10 +1,8 @@
-﻿using MediatR;
-
-namespace CQRSProjectModel.Domain.Core.Events
+﻿namespace CQRSProjectModel.Domain.Core.Requests
 {
-    public abstract class Message : IRequest
+    public class RequestMessage
     {
-        public Message()
+        public RequestMessage()
         {
             MessageType = GetType().Name;
         }

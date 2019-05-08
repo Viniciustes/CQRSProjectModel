@@ -1,9 +1,8 @@
-﻿using CQRSProjectModel.Domain.Core.Commands;
-using System;
+﻿using System;
 
-namespace CQRSProjectModel.Domain.Commands.Pessoa
+namespace CQRSProjectModel.Domain.Requests.Pessoa
 {
-    public abstract class PessoaCommand : Command
+    internal abstract class PessoaRequest : Request
     {
         public Guid Id { get; protected set; }
 

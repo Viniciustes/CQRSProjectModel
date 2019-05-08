@@ -2,16 +2,9 @@
 using CQRSProjectModel.Application.AutoMapper;
 using CQRSProjectModel.Application.Interfaces;
 using CQRSProjectModel.Application.Services;
-using CQRSProjectModel.Domain.Commands.Pessoa.Normalize;
-using CQRSProjectModel.Domain.CommandsHandlers.Normalize;
-using CQRSProjectModel.Domain.Core.Mediators.Normalize;
-using CQRSProjectModel.Domain.Core.Notifications;
-using CQRSProjectModel.Domain.Events.Pessoa;
-using CQRSProjectModel.Domain.EventsHandlers;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
-using CQRSProjectModel.Infrastructure.CrossCutting.Mediator.Mediators;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Context;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories.ReadOnly;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
@@ -20,6 +13,7 @@ using CQRSProjectModel.Infrastructure.Data.SQLServer.UnitOfWork;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace CQRSProjectModel.Infrastructure.CrossCutting.IoC.DependencyInjections
 {
@@ -33,11 +27,6 @@ namespace CQRSProjectModel.Infrastructure.CrossCutting.IoC.DependencyInjections
             services.AddScoped<IRepositoryPessoaNormalizeWriteOnly, RepositoryPessoa>();
 
             // 1 - Domain Commands
-            services.AddScoped<IRequestHandler<CreatePessoaCommandNormalize>, PessoaCommandHandlerNormalize>();
-
-            services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
-
-            services.AddScoped<INotificationHandler<CreatedPessoaEvent>, PessoaEventHandler>();
 
             // 2 - Application
             services.AddScoped<IPessoaAppService, PessoaAppService>();
@@ -47,10 +36,13 @@ namespace CQRSProjectModel.Infrastructure.CrossCutting.IoC.DependencyInjections
             services.AddScoped<CQRSProjectModelSQLServerContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            // 3 Infrastructure - CrossCutting
-            services.AddMediatR(typeof(CreatePessoaCommandNormalize));
-            services.AddScoped<IMediatorHandlerNormalize, MediatorHandlerNormalize>();
-            services.AddAutoMapper();
+            // 3 Infrastructure - CrossCutting -- MediatR
+            var assemblyForMediatR = AppDomain.CurrentDomain.Load("CQRSProjectModel.Domain");
+            services.AddMediatR(assemblyForMediatR);
+
+            // 3 Infrastructure - CrossCutting -- AutoMapper
+            var assemblyForAutoMapper = AppDomain.CurrentDomain.Load("CQRSProjectModel.Application");
+            services.AddAutoMapper(assemblyForAutoMapper);
             AutoMapperConfig.RegisterMappings();
         }
 

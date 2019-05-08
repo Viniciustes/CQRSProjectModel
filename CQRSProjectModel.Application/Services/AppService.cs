@@ -9,12 +9,12 @@ namespace CQRSProjectModel.Application.Services
     public class AppService<TEntity> : IAppService<TEntity> where TEntity : class
     {
         private readonly IMapper mapper;
-        private readonly IRepositoryDenormalizeReadOnly<TEntity> repositoryDenormalizeReadOnly;
+        private readonly IRepositoryDenormalizeReadOnly<TEntity> _repositoryDenormalizeReadOnly;
 
         public AppService(IMapper mapper, IRepositoryDenormalizeReadOnly<TEntity> repositoryDenormalizeReadOnly)
         {
             this.mapper = mapper;
-            this.repositoryDenormalizeReadOnly = repositoryDenormalizeReadOnly;
+            this._repositoryDenormalizeReadOnly = repositoryDenormalizeReadOnly;
         }
 
         public async Task Create(TEntity entity)
@@ -24,7 +24,7 @@ namespace CQRSProjectModel.Application.Services
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await repositoryDenormalizeReadOnly.GetAllAsync();
+            return await _repositoryDenormalizeReadOnly.GetAllAsync();
         }
     }
 }

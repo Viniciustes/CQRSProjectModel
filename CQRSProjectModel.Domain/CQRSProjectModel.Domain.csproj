@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CQRSProjectModel.Domain.Core\CQRSProjectModel.Domain.Core.csproj" />
+    <Folder Include="Requests\Pessoa\Denormalize\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="fluentvalidation" Version="8.3.0" />
+    <PackageReference Include="mediatr" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,15 +1,8 @@
-﻿using CQRSProjectModel.Domain.Commands.Pessoa.Normalize;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CQRSProjectModel.Domain.Requests.Pessoa.Normalize;
 
 namespace CQRSProjectModel.Domain.Validations.Pessoa
 {
-    class CreatePessoaValidation : PessoaValidation<CreatePessoaCommandNormalize>
+    class CreatePessoaValidation : PessoaValidation<CreatePessoaRequestNormalize>
     {
-        public CreatePessoaValidation()
-        {
-
-        }
     }
 }

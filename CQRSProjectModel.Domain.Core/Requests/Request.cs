@@ -1,12 +1,12 @@
-﻿using CQRSProjectModel.Domain.Core.Events;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
+using MediatR;
 using System;
 
-namespace CQRSProjectModel.Domain.Core.Commands
+namespace CQRSProjectModel.Domain.Core.Requests
 {
-    public abstract class Command : Message
+    public abstract class Request : RequestMessage, IRequest
     {
-        public Command()
+        public Request()
         {
             Timestamp = DateTime.Now;
         }
@@ -14,6 +14,8 @@ namespace CQRSProjectModel.Domain.Core.Commands
         public DateTime Timestamp { get; private set; }
 
         public ValidationResult ValidationResult { get; set; }
+
+        public DateTime DataTime { get; }
 
         public abstract bool IsValid();
     }

@@ -1,11 +1,11 @@
 ﻿using CQRSProjectModel.Domain.Validations.Pessoa;
 using System;
 
-namespace CQRSProjectModel.Domain.Commands.Pessoa.Normalize
+namespace CQRSProjectModel.Domain.Requests.Pessoa.Normalize
 {
-    public class CreatePessoaCommandNormalize : PessoaCommand
+    internal class CreatePessoaRequestNormalize : PessoaRequest
     {
-        public CreatePessoaCommandNormalize(string nome, string cPF, DateTime nascimento, string telefone)
+        public CreatePessoaRequestNormalize(string nome, string cPF, DateTime nascimento, string telefone)
         {
             Nome = nome;
             CPF = cPF;
