@@ -1,4 +1,4 @@
-﻿using CQRSProjectModel.Domain.Entities;
+﻿using CQRSProjectModel.Domain.Models;
 
 namespace CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly
 {

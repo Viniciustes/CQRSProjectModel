@@ -1,5 +1,5 @@
-﻿using CQRSProjectModel.Domain.Entities;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
+﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
+using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 
 namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories

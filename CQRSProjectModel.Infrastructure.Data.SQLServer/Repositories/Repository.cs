@@ -1,5 +1,5 @@
-﻿using CQRSProjectModel.Domain.Core.Entities;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
+﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize.WriteOnly;
+using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
 {
-    public class Repository<TEntity> : IRepositoryNormalizeWriteOnly<TEntity> where TEntity : Entity
+    public class Repository<TEntity> : IRepositoryNormalizeWriteOnly<TEntity> where TEntity : ModelBase
     {
         private readonly DbSet<TEntity> DbSet;
 

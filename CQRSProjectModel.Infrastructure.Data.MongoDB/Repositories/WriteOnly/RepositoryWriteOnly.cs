@@ -1,12 +1,12 @@
-﻿using CQRSProjectModel.Domain.Core.Entities;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.WriteOnly;
+﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.WriteOnly;
+using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Context;
 using MongoDB.Driver;
 using System;
 
 namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories.WriteOnly
 {
-    class RepositoryWriteOnly<TEntity> : IRepositoryDenormalizeWriteOnly<TEntity> where TEntity : Entity
+    class RepositoryWriteOnly<TEntity> : IRepositoryDenormalizeWriteOnly<TEntity> where TEntity : ModelBase
     {
         protected readonly IMongoCollection<TEntity> mongoCollection;
 

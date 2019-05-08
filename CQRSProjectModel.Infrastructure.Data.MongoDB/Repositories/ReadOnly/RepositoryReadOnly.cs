@@ -1,5 +1,5 @@
-﻿using CQRSProjectModel.Domain.Core.Entities;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
+﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
+using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Context;
 using MongoDB.Driver;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories.ReadOnly
 {
-    public class RepositoryReadOnly<TEntity> : IRepositoryDenormalizeReadOnly<TEntity> where TEntity : Entity
+    public class RepositoryReadOnly<TEntity> : IRepositoryDenormalizeReadOnly<TEntity> where TEntity : ModelBase
     {
         protected readonly IMongoCollection<TEntity> mongoCollection;
 

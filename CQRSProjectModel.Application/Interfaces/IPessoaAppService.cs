@@ -1,5 +1,5 @@
 ﻿using CQRSProjectModel.Application.ViewModels;
-using CQRSProjectModel.Domain.Entities;
+using CQRSProjectModel.Domain.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -1,5 +1,5 @@
-﻿using CQRSProjectModel.Domain.Entities;
-using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
+﻿using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize.ReadOnly;
+using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Context;
 
 namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories.ReadOnly

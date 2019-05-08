@@ -1,4 +1,4 @@
-﻿using CQRSProjectModel.Domain.Entities;
+﻿using CQRSProjectModel.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,9 +1,8 @@
-﻿using CQRSProjectModel.Domain.Core.Entities;
-using System;
+﻿using System;
 
-namespace CQRSProjectModel.Domain.Entities
+namespace CQRSProjectModel.Domain.Models
 {
-    public class Pessoa : Entity
+    public class Pessoa : ModelBase
     {
         // Construtor em banco para uso do EF.
         protected Pessoa() { }

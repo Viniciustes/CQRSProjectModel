@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CQRSProjectModel.Application.ViewModels;
-using CQRSProjectModel.Domain.Entities;
+using CQRSProjectModel.Domain.Models;
 
 namespace CQRSProjectModel.Application.AutoMapper
 {
