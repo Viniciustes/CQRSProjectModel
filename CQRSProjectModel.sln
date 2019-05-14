@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Applicatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Infrastructure.CrossCutting.IoC", "CQRSProjectModel.Infrastructure.CrossCutting.IoC\CQRSProjectModel.Infrastructure.CrossCutting.IoC.csproj", "{9965206C-75AA-4068-8011-46A39EA08A51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSProjectModel.Infrastructure.CrossCutting.Mediator", "CQRSProjectModel.Infrastructure.CrossCutting.Mediator\CQRSProjectModel.Infrastructure.CrossCutting.Mediator.csproj", "{20B9C918-CA5C-43FA-A7FA-E35A62647295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSProjectModel.Infrastructure.CrossCutting.Mediator", "CQRSProjectModel.Infrastructure.CrossCutting.Mediator\CQRSProjectModel.Infrastructure.CrossCutting.Mediator.csproj", "{20B9C918-CA5C-43FA-A7FA-E35A62647295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

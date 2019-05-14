@@ -3,26 +3,21 @@ using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize;
 using CQRSProjectModel.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Domain.Services
 {
-    class Service<TEntity> : IService<TEntity> where TEntity : class
+    public class Service<TEntity> : IService<TEntity> where TEntity : class
     {
-        private readonly IRepository<TEntity> _repositoryNormalize;
-
+        private readonly IRepositoryNormalize<TEntity> _repositoryNormalize;
         private readonly IRepositoryDenormalize<TEntity> _repositoryDenormalize;
 
-        public Service(IRepository<TEntity> repositoryNormalize, IRepositoryDenormalize<TEntity> repositoryDenormalize)
+        public Service(IRepositoryNormalize<TEntity> repositoryNormalize, IRepositoryDenormalize<TEntity> repositoryDenormalize)
         {
             _repositoryNormalize = repositoryNormalize;
-
             _repositoryDenormalize = repositoryDenormalize;
-        }
-
-        public async Task Create(TEntity entity)
-        {
-            await _repositoryNormalize.Create(entity);
         }
 
         public async Task Delete(Guid guid)
@@ -30,12 +25,22 @@ namespace CQRSProjectModel.Domain.Services
             await _repositoryNormalize.Delete(guid);
         }
 
+        public IQueryable<TEntity> FindNormalize(Expression<Func<TEntity, bool>> expression)
+        {
+            return _repositoryNormalize.Find(expression);
+        }
+
+        public IQueryable<TEntity> FindDenormalize(Expression<Func<TEntity, bool>> expression)
+        {
+            return _repositoryDenormalize.Find(expression);
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _repositoryDenormalize.GetAllAsync();
         }
 
-        public async Task<TEntity> GetById(Guid guid)
+        public async Task<TEntity> GetByIdAsync(Guid guid)
         {
             return await _repositoryDenormalize.GetByIdAsync(guid);
         }

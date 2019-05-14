@@ -12,13 +12,11 @@ namespace CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize
 
         IQueryable<TEntity> GetAll();
 
-        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression);
+        IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> expression);
 
         Task<TEntity> GetByIdAsync(Guid guid);
 
         Task<IList<TEntity>> GetAllAsync();
-
-        Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> expression);
 
         void Create(TEntity entity);
 

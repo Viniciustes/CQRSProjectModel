@@ -8,8 +8,6 @@ namespace CQRSProjectModel.Application.Interfaces
     {
         Task Delete(Guid guid);
 
-        Task Create(TEntity entity);
-
         void Update(TEntity entity);
 
         Task<TEntity> GetById(Guid guid);

@@ -2,7 +2,7 @@
 
 namespace CQRSProjectModel.Domain.Interfaces.Repositories.Normalize
 {
-    public interface IRepositoryPessoa : IRepository<Pessoa>
+    public interface IRepositoryNormalizePessoa : IRepositoryNormalize<Pessoa>
     {
     }
 }

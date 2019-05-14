@@ -2,11 +2,17 @@
 using CQRSProjectModel.Application.AutoMapper;
 using CQRSProjectModel.Application.Interfaces;
 using CQRSProjectModel.Application.Services;
+using CQRSProjectModel.Domain.Interfaces.Mediators;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Denormalize;
 using CQRSProjectModel.Domain.Interfaces.Repositories.Normalize;
-using CQRSProjectModel.Domain.Requests.Notification;
-using CQRSProjectModel.Domain.Requests.Pessoa.Normalize;
+using CQRSProjectModel.Domain.Interfaces.Services;
+using CQRSProjectModel.Domain.Notifications;
+using CQRSProjectModel.Domain.Requests.Events.Pessoa;
+using CQRSProjectModel.Domain.Requests.Pessoa;
 using CQRSProjectModel.Domain.RequestsHandlers;
+using CQRSProjectModel.Domain.RequestsHandlers.Events;
+using CQRSProjectModel.Domain.Services;
+using CQRSProjectModel.Infrastructure.CrossCutting.Mediator.Mediators;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Context;
 using CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
@@ -24,15 +30,20 @@ namespace CQRSProjectModel.Infrastructure.CrossCutting.IoC.DependencyInjections
         public static void ConfigureServiceCollection(IServiceCollection services)
         {
             // 1 - Domain
-            services.AddScoped<IRepositoryPessoa, RepositoryPessoa>();
+            services.AddScoped<IServicePessoa, ServicePessoa>();
 
+            services.AddScoped<IRepositoryNormalizePessoa, RepositoryNormalizePessoa>();
             services.AddScoped<IRepositoryDenormalizePessoa, RepositoryDenormalizePessoa>();
+
+            services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             //Todo: Verificar diferenças INotificationHandler e IRequestHandler
             // 1 - Domain Request
-            services.AddScoped<INotificationHandler<NotificationRequest>, NotificationRequestHandler>();
+            services.AddScoped<INotificationHandler<Notification>, NotificationRequestHandler>();
 
-            //services.AddScoped<INotificationHandler<CreatePessoaRequestNormalize>, PessoaRequestHandler>();
+            services.AddScoped<IRequestHandler<CreateRequestPessoa>, PessoaRequestHandler>();
+
+            services.AddScoped<INotificationHandler<CreateRequestEventPessoa>, RequestHandlerEventPessoa>();
 
             // 2 - Application
             services.AddScoped<IPessoaAppService, PessoaAppService>();

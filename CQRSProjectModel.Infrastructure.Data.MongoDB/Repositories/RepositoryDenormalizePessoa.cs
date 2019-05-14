@@ -6,7 +6,9 @@ namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories
 {
     public class RepositoryDenormalizePessoa : RepositoryDenormalize<Pessoa>, IRepositoryDenormalizePessoa
     {
-        public RepositoryDenormalizePessoa(CQRSProjectModelMongoDbContext context, string nameColection) : base(context, nameColection)
+        private static readonly string nameColection = "Pessoa";
+
+        public RepositoryDenormalizePessoa(CQRSProjectModelMongoDbContext context) : base(context, nameColection)
         {
         }
     }

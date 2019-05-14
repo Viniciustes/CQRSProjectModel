@@ -1,18 +1,18 @@
 ﻿using CQRSProjectModel.Domain.Validations.Pessoa;
 using System;
 
-namespace CQRSProjectModel.Domain.Requests.Pessoa.Normalize
+namespace CQRSProjectModel.Domain.Requests.Pessoa
 {
-    public class CreatePessoaRequestNormalize : PessoaRequest
+    public class CreateRequestPessoa : RequestPessoa
     {
-        public CreatePessoaRequestNormalize(string nome, string cPF, DateTime nascimento, string telefone)
+        public CreateRequestPessoa(string nome, string cPF, DateTime nascimento, string telefone)
         {
             Nome = nome;
             CPF = cPF;
             Nascimento = nascimento;
             Telefone = telefone;
         }
-
+      
         public override bool IsValid()
         {
             ValidationResult = new CreatePessoaValidation().Validate(this);

@@ -19,16 +19,6 @@ namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories
             mongoCollection = context.MongoDatabase.GetCollection<TEntity>(nameColection);
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression)
-        {
-            return expression == null ? GetAll() : GetAll().Where(expression);
-        }
-
-        public async Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> expression)
-        {
-            return expression == null ? await GetAllAsync() : mongoCollection.AsQueryable().Where(expression).ToList();
-        }
-
         public IQueryable<TEntity> GetAll()
         {
             return mongoCollection.AsQueryable();
@@ -62,6 +52,11 @@ namespace CQRSProjectModel.Infrastructure.Data.MongoDB.Repositories
         public void Update(TEntity entity)
         {
             mongoCollection.ReplaceOne(x => x.Id == entity.Id, entity);
+        }
+
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> expression)
+        {
+            return mongoCollection.AsQueryable().Where(expression);
         }
     }
 }

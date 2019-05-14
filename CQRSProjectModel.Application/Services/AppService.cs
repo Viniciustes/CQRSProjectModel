@@ -15,11 +15,6 @@ namespace CQRSProjectModel.Application.Services
             _service = service;
         }
 
-        public async Task Create(TEntity entity)
-        {
-            await _service.Create(entity);
-        }
-
         public async Task Delete(Guid guid)
         {
             await _service.Delete(guid);
@@ -32,7 +27,7 @@ namespace CQRSProjectModel.Application.Services
 
         public async Task<TEntity> GetById(Guid guid)
         {
-            return await _service.GetById(guid);
+            return await _service.GetByIdAsync(guid);
         }
 
         public void Update(TEntity entity)

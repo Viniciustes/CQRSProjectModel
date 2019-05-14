@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mediators\" />
+    <ProjectReference Include="..\CQRSProjectModel.Domain\CQRSProjectModel.Domain.csproj" />
   </ItemGroup>
 
 </Project>

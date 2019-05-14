@@ -4,9 +4,9 @@ using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 
 namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
 {
-    public class RepositoryPessoa : Repository<Pessoa>, IRepositoryPessoa
+    public class RepositoryNormalizePessoa : RepositoryNormalize<Pessoa>, IRepositoryNormalizePessoa
     {
-        public RepositoryPessoa(CQRSProjectModelSQLServerContext context) : base(context)
+        public RepositoryNormalizePessoa(CQRSProjectModelSQLServerContext context) : base(context)
         {
         }
     }

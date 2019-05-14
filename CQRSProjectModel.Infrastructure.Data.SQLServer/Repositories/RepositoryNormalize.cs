@@ -3,17 +3,19 @@ using CQRSProjectModel.Domain.Models;
 using CQRSProjectModel.Infrastructure.Data.SQLServer.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : ModelBase
+    public class RepositoryNormalize<TEntity> : IRepositoryNormalize<TEntity> where TEntity : ModelBase
     {
         private readonly DbSet<TEntity> DbSet;
 
         protected readonly CQRSProjectModelSQLServerContext context;
 
-        public Repository(CQRSProjectModelSQLServerContext context)
+        public RepositoryNormalize(CQRSProjectModelSQLServerContext context)
         {
             DbSet = context.Set<TEntity>();
         }
@@ -34,6 +36,11 @@ namespace CQRSProjectModel.Infrastructure.Data.SQLServer.Repositories
         public void Update(TEntity entity)
         {
             DbSet.Update(entity);
+        }
+
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> expression)
+        {
+            return DbSet.AsQueryable().Where(expression);
         }
     }
 }
